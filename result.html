@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-center">Malaria Detection Results</h1>
+        <div class="text-center mt-3">
+            <h3>Diagnosis: {{ parasite_type }}</h3>
+            <h5>Infection Percentage: {{ infection_percentage }}%</h5>
+            <!-- Displaying the uploaded image -->
+            <img src="{{ url_for('static', filename='uploads/' + img_path.split('/')[-1]) }}" 
+                 alt="Uploaded Image" class="img-fluid mt-3" style="max-width: 400px;">
+        </div>
+        <div class="mt-5">
+            <h4>Treatment Recommendations:</h4>
+            <p>{{ treatment }}</p>
+
+            {% if prevention_tips %}
+            <h4>Prevention Tips:</h4>
+            <ul>
+                {% for tip in prevention_tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="mt-4 text-center">
+            <a href="/" class="btn btn-primary">Upload Another Image</a>
+        </div>
+    </div>
+</body>
+</html>
